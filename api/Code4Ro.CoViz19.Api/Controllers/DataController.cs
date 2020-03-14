@@ -14,7 +14,7 @@ namespace Code4Ro.CoViz19.Api.Controllers
     [Route("api/v1/data")]
     [Produces("application/json")]
     [SwaggerTag("Enpoint for provinding latest relevant data")]
-    public class DataController : Controller
+    public class DataController : ControllerBase
     {
         private readonly IMediator _mediator;
         public DataController(IMediator mediator)
