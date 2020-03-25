@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Shouldly;
 using System.Net;
 using System.Threading.Tasks;
+using Code4Ro.CoViz19.Services;
+using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
 namespace Code4Ro.CoViz19.Api.Tests
@@ -13,6 +15,13 @@ namespace Code4Ro.CoViz19.Api.Tests
         public DataV2SanityTests()
         {
             _factory = new CustomWebApplicationFactory<Startup>();
+
+            // setup the swaps
+            _factory.Registrations = services =>
+            {
+                services.AddTransient<LocalFileService>();
+                services.SwapSingletone<IFileService>(x => x.GetService(typeof(LocalFileService)) as LocalFileService);
+            };
         }
 
         [Theory]
