@@ -17,7 +17,7 @@ namespace Code4Ro.CoViz19.Api
                 {
                     logging.AddDebug();
                     logging.AddConsole();
-                    logging.SetMinimumLevel(LogLevel.None);
+                    logging.SetMinimumLevel(LogLevel.Debug);
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
